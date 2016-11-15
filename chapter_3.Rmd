@@ -2,7 +2,8 @@
 title: "Chapter 3"
 author: "Lawrence Wu"
 date: "November 14, 2016"
-output: html_document
+output: github_document
+
 ---
 
 ```{r setup, include=FALSE}
@@ -11,6 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(AppliedPredictiveModeling)
 library(dplyr)
 library(ggplot2)
+library(GGally)
 
 ```
 
@@ -22,6 +24,20 @@ data(Glass)
 glimpse(Glass)
 
 summary(Glass)
+
+ggplot(aes(x = RI), data = Glass) +
+  geom_histogram() + 
+  ggtitle("Histogram of RI")
+
+ggplot(aes(x = Na), data = Glass) +
+  geom_histogram() + 
+  ggtitle("Histogram of Na")
+
+plot(Glass)
+
+# better pairs plot
+ggpairs(Glass,
+    diag=list(continuous="density",   discrete="bar"), axisLabels="show")
 
 ```
 
